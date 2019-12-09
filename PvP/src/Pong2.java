@@ -11,14 +11,14 @@ public class Pong2 extends JComponent implements ActionListener, MouseMotionList
 {
 	private int ballX = (int) (Math.random() * 770);
 	private int ballY = (int) (Math.random() * 200 + 110);
-	private double ballYSpeed = ;
+	private double ballYSpeed = 3;
 	private double ballXSpeed = Math.random() * 3 + 3;
 	private double ballSpeedRate = 1.035;
 	private int paddleX = 325;
 	private int paddleY = 510;
 	private int paddle2X = 325;
 	private int paddle2Y = 75;
-	private int paddleSpeed = 15;
+	private int paddleSpeed = 10;
 	private boolean brpaddleX = false;
 	private boolean blpaddleX = false;
 	private boolean brpaddle2X = false;
