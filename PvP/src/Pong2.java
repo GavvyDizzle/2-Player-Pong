@@ -10,15 +10,15 @@ import java.awt.event.MouseMotionListener;
 public class Pong2 extends JComponent implements ActionListener, MouseMotionListener, KeyListener
 {
 	private int ballX = (int) (Math.random() * 770);
-	private int ballY = (int) (Math.random() * 200 + 110);
+	private int ballY = 120;
 	private double ballYSpeed = 3;
 	private double ballXSpeed = Math.random() * 3 + 3;
-	private double ballSpeedRate = 1.035;
+	private double ballSpeedRate = 1.1;
 	private int paddleX = 325;
 	private int paddleY = 510;
 	private int paddle2X = 325;
 	private int paddle2Y = 75;
-	private int paddleSpeed = 10;
+	private int paddleSpeed = 15;
 	private boolean brpaddleX = false;
 	private boolean blpaddleX = false;
 	private boolean brpaddle2X = false;
@@ -55,10 +55,10 @@ public class Pong2 extends JComponent implements ActionListener, MouseMotionList
 		g.fillRect(0, 0, 800, 600);
 
 		g.setColor(new Color(110, 65, 13)); //Paddle
-		g.fillRect(paddleX, paddleY, 150, 15);
+		g.fillRect(borderCollide(paddleX), paddleY, 150, 15);
 
 		g.setColor(new Color(110, 65, 13)); //player 2 paddle
-		g.fillRect(paddle2X, paddle2Y, 150, 15);
+		g.fillRect(borderCollide2(paddle2X), paddle2Y, 150, 15);
 
 		g.setColor(new Color(155, 93, 169)); //Ball
 		g.fillOval(ballX, ballY, 30, 30);
@@ -74,6 +74,30 @@ public class Pong2 extends JComponent implements ActionListener, MouseMotionList
 				g.drawString("BOTTOM PLAYER WINS!", 155, 300);
 			
 		}
+	}
+
+	private int borderCollide(int p) {
+		if(p <= 0) {
+			paddleX = 0;
+			return 0;
+		}
+		if(p + 150 >= 800) {
+			paddleX = 650;
+			return 650;
+		}
+		return paddleX;
+	}
+	
+	private int borderCollide2(int p) {
+		if(p <= 0) {
+			paddle2X = 0;
+			return 0;
+		}
+		if(p + 150 >= 800) {
+			paddle2X = 650;
+			return 650;
+		}
+		return paddle2X;
 	}
 
 	@Override
